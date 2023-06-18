@@ -60,7 +60,7 @@ function DragDrop() {
       <Board board={board} setBoard={setBoard} setObjectData={setObjectData} />
       <div className='objects'>
         <h2>Список объектов</h2>
-        <p>Добавьте объект на доску, кликнув по нему.</p>
+        <p>Добавьте объект на доску, кликнув по нему мышкой.</p>
           {imageList.map(el => <ElementImage onClick={() => addImageToBoard(el.type)} key={el.type} url={el.url} />)}
           <form onSubmit={onSubmit}>
             <p>Загрузить координаты объекта из файла.</p>
@@ -68,8 +68,8 @@ function DragDrop() {
             <button type='submit' >Загрузить</button>
           </form>
         </div>
-        <div>
-          <p>Дважды кликнув по объекту можно получить координаты объекта.</p>
+        <div className='description'>
+          <p>Дважды кликнув по объекту можно получить его координаты.</p>
           <h3>Координаты выбранного объекта:</h3>
           <p>OffsetTop: {objectData.top} ---- OffsetLeft: {objectData.left}</p>
           <button onClick={handleExport}>Сохранить</button>
