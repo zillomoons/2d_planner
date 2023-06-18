@@ -35,7 +35,7 @@ function DragDrop() {
   
   const addImageToBoard = (type) => {
     const image = imageList.filter(el => el.type === type)[0];
-    setBoard((board) => [...board, { ...image, id: uuidv4(), left: 30, top: 30 }]);
+    setBoard((board) => [...board, { ...image, id: uuidv4(), left: 0, top: 80 }]);
   }
 
   function handleExport() {
@@ -55,7 +55,8 @@ function DragDrop() {
   
 
   return (
-  <>
+    <>
+      <h1>2D-Планировщик</h1>
     <div className='container'> 
       <Board board={board} setBoard={setBoard} setObjectData={setObjectData} />
       <div className='objects'>

@@ -21,7 +21,12 @@
   width: 30%;
   min-width: 320px;
   border: 2px solid lightgray;
-  padding: 30px;
+  padding: 0 30px;
+}
+
+.board-title{
+  text-align: left;
+  margin-left: 15px;
 }
 
 .description{

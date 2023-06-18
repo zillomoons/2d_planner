@@ -29,6 +29,7 @@ function Board({board, setBoard, setObjectData}) {
   )
   return (
     <div ref={drop} className='board'>
+      <h2 className='board-title'>Карта</h2>
       {Object.keys(board).map((key) => { 
         const { left, top, url, id, type } = board[key];
         return <DraggableImage key={key} left={left} id={id} top={top} url={url} onDoubleClick={() => setObjectData({ top, left, id, type })} />
