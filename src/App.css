@@ -1,0 +1,107 @@
+
+/* 2d planner */
+
+.container{
+  width: 90%;
+  min-height: 500px;
+  display: flex;
+  margin: 50px auto;
+  flex-wrap: wrap;
+}
+
+.board{
+  width: 70%;
+  border: 2px solid lightgrey;
+  position: relative;
+  height: 70vh;
+}
+.objects{
+  width: 30%;
+  min-width: 320px;
+  border: 2px solid lightgray;
+  padding: 30px;
+}
+
+.box{
+  width: 300px;
+  height: 200px;
+  background: #3f51b5;
+    color: #ffeb3b;
+    border-radius: 3px;
+    border: 2px solid red;
+    margin: 30px auto;
+}
+
+
+.table-round{
+  width: 100px;
+  height: 50px;
+  background-color: aliceblue;
+}
+
+.addItem:hover{
+  cursor: pointer;
+
+}
+
+.addItem:active{
+  border: 5px solid pink;
+}
+
+
+
+
+
+/* Resizable styles */
+.resizable {
+  position: absolute;
+  margin: 30px auto;
+  width: 300px;
+  height: 200px;
+  min-width: 15px;
+  min-height: 15px;
+  background: #3f51b5;
+  color: #ffeb3b;
+  border-radius: 3px;
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resizer {
+  position: absolute;
+  background: black;
+}
+
+.resizer-r {
+  cursor: col-resize;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 5px;
+}
+
+.resizer-l {
+  cursor: col-resize;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 5px;
+}
+
+.resizer-t {
+  cursor: row-resize;
+  height: 5px;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.resizer-b {
+  cursor: row-resize;
+  height: 5px;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
