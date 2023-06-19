@@ -1,10 +1,12 @@
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
 import Board from './Board';
-import ElementImage from './ElementImage';
-import { exportObjectInfo, handleChange } from './utils';
+import ObjectsList from './ObjectsList';
+import CoordinatesOutput from './CoordinatesOutput';
+
+
 
 const imageList = [
   {
@@ -33,48 +35,25 @@ function DragDrop() {
   const [file, setFile] = useState();
 
   
-  const addImageToBoard = (type) => {
+  const addImageToBoard = function (type){
     const image = imageList.filter(el => el.type === type)[0];
     setBoard((board) => [...board, { ...image, id: uuidv4(), left: 0, top: 80 }]);
   }
-
-  function handleExport() {
-    if (objectData.id) {
-      exportObjectInfo(objectData);
-    }
-  }
-
   
-  function onSubmit(e) {
+  const onSubmit = function (e) {
     e.preventDefault();
     const fileData = JSON.parse(file);
     const url = imageList.filter(image => image.type === fileData.type)[0].url;
     setBoard([...board, { ...fileData, url }])
-  }
-  
-  
+  };
 
   return (
     <>
       <h1>2D-Планировщик</h1>
     <div className='container'> 
-      <Board board={board} setBoard={setBoard} setObjectData={setObjectData} />
-      <div className='objects'>
-        <h2>Список объектов</h2>
-        <p>Добавьте объект на доску, кликнув по нему мышкой.</p>
-          {imageList.map(el => <ElementImage onClick={() => addImageToBoard(el.type)} key={el.type} url={el.url} />)}
-          <form onSubmit={onSubmit}>
-            <p>Загрузить координаты объекта из файла.</p>
-            <input type='file' onChange={(e)=>handleChange(e, setFile)} />
-            <button type='submit' >Загрузить</button>
-          </form>
-        </div>
-        <div className='description'>
-          <p>Дважды кликнув по объекту можно получить его координаты.</p>
-          <h3>Координаты выбранного объекта:</h3>
-          <p>OffsetTop: {objectData.top} ---- OffsetLeft: {objectData.left}</p>
-          <button onClick={handleExport}>Сохранить</button>
-        </div>
+        <Board board={board} setBoard={setBoard} setObjectData={setObjectData} />
+        <ObjectsList imageList={imageList} onSubmit={onSubmit} addImageToBoard={addImageToBoard} setFile={setFile} />
+        <CoordinatesOutput objectData={objectData} />
       </div>
       </>
   )
